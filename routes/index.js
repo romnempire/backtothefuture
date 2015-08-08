@@ -25,9 +25,10 @@ router.get('/tutorial/:tagId', function(req, res) {
   });
 });
 
-router.post('/addcomment/:tagId', function(req, res) {
+router.post('/addcomment/:tagId/:tagTitle', function(req, res) {
   var collection = req.db.get('tutorialcollection');
-  var comment = req.body.comment
+  var comment = req.body.comment;
+  console.log("entered rt");
   collection.insert({
     "relID" : collection.id(req.params.tagId),
     "text" : comment
@@ -35,7 +36,7 @@ router.post('/addcomment/:tagId', function(req, res) {
     if (err) {
       res.send("There was a problem");
     } else {
-      res.redirect('/tutorial/howtocook');
+      res.redirect('/tutorial/'+req.params.tagTitle);
     }
   });
 });
