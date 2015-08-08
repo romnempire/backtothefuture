@@ -3,7 +3,7 @@ block content
   h1= title
   p= body
 
-  form#formAddComment(name="addComment",method="post",action="/addcomment/" + "#{pageID}")
+  form#formAddComment(name="addComment",method="post",action="/addcomment/"+"#{pageID}"+"/"+"#{title}")
     input#inputComment(type="text",placeholder="Add a comment.",name="comment")
     button#btnSubmit(type="submit") Submit
 
