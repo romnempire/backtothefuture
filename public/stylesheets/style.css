@@ -1,4 +1,9 @@
 body {
+  background-image: url(/images/nature.jpg);
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
   padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
@@ -6,3 +11,9 @@ body {
 a {
   color: #00B7FF;
 }
+
+.carousel-inner img {
+   margin: auto;
+}
+
+
