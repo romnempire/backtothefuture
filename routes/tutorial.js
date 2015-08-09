@@ -8,6 +8,11 @@ router.get('/', function(req, res) {
   });
 });
 
+router.get('/newtutorial', function(req, res) {
+  res.render('newtutorial');
+});
+
+// This should be the the last get request always!
 router.get('/:tagId', function(req, res) {
   var collection = req.db.get('testTutorials');
   collection.find({_id: req.params.tagId}, {}, function(e, docs) {
@@ -15,7 +20,7 @@ router.get('/:tagId', function(req, res) {
     if (docs.length == 0) {
       res.send('Error, no page found');
     } else {
-      collection.find({relID: docs[0]._id}, {}, function(e, newDocs) {
+      req.db.get('testComments').find({relID: docs[0]._id}, {}, function(e, newDocs) {
         res.render('tutorialspage', { 
           title: docs[0].title, 
           body: docs[0].body, 
@@ -28,9 +33,8 @@ router.get('/:tagId', function(req, res) {
 });
 
 router.post('/addcomment/:tagId', function(req, res) {
-  var collection = req.db.get('testTutorials');
+  var collection = req.db.get('testComments');
   var comment = req.body.comment;
-  console.log("entered rt");
   collection.insert({
     "relID" : collection.id(req.params.tagId),
     "text" : comment
@@ -39,6 +43,22 @@ router.post('/addcomment/:tagId', function(req, res) {
       res.send("There was a problem");
     } else {
       res.redirect('/tutorial/'+req.params.tagId);
+    }
+  });
+});
+
+router.post('/addtutorial', function(req, res) {
+  var collection = req.db.get('testTutorials');
+  var title = req.body.title;
+  var body = req.body.body;
+  collection.insert({
+    "title" : title,
+    "body" : body
+  }, function(err, doc) {
+    if (err) {
+      res.send("There was a problem.");
+    } else {
+      res.redirect('/tutorial');
     }
   });
 });
