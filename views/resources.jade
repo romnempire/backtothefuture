@@ -36,7 +36,7 @@ block content
       p
         = resource.name
         form(name='addComment', method="post", id=resource._id + '')
-          input(type='text', placeholder='comment here', name='commentText')
+          input(class ='input',type='text', placeholder='comment here', name='commentText')
           button#btn.btn-primary(type='button', onclick='comment("'+ resource._id +'")') Submit
         each comment in resource.comments
           p

@@ -89,7 +89,7 @@ a {
 }
 
 .resource{
-  color:white;
+  color: #0
   font-size:32px;
 }
 
@@ -117,4 +117,8 @@ a {
 
 #checkout{
   margin-bottom: 5px;
+}
+
+#input{
+  color: #0;
 }
