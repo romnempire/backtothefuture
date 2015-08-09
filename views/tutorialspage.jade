@@ -1,14 +1,14 @@
 extends layout
 block content
-  h1= title
-  p!= body.replace(/\n/g, '<br />')
+  h1#create= title
+  p#subtitle!= body.replace(/\n/g, '<br />')
 
   form#formAddComment(name="addComment",method="post",action="/tutorial/addcomment/"+"#{pageID}")
     input#inputComment(type="text",placeholder="Add a comment.",name="comment")
-    button#btnSubmit(type="submit") Submit
+    button#btn.btn-primary(type="submit") Submit
 
-  table#comments
+  table
     tbody
       for comment in comments
         tr
-          td= comment.text
+          td#comments= comment.text
