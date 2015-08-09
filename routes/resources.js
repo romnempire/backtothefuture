@@ -13,7 +13,7 @@ router.get('/', function(req, res) {
     console.log(data);
 
     resources.resources = data;
-    res.render('resourcespage', resources);
+    res.render('resources', resources);
   });
 });
 

@@ -1,13 +1,13 @@
 extends layout
 
 block content
-  h1 Tutorials
+  #create Tutorials 
   
-  a(href='/tutorial/newtutorial') Create a new tutorial!
-
   table
     tbody
       for tutorial in tutorials
         tr
-          td 
-            a(href="/tutorial/" + tutorial._id) #{tutorial.title}
+          td.tables
+            button.btn.btn-default.btn-md(href="/tutorial/" + tutorial._id) #{tutorial.title}
+
+  button#btn.btn-primary.btn-lg(href='/tutorial/newtutorial') Create a new tutorial!

@@ -1,9 +1,12 @@
 extends layout
 
 block content
-  h1 Create a new tutorial!
+   #create Create A New Tutorial!
 
-  form#postTutorial(name="postTutorial",method="post",action="/tutorial/addtutorial")
+   
+   form#postTutorial(name="postTutorial",method="post",action="/tutorial/addtutorial")
     input#inputTitle(type="text",placeholder="Title",name="title")
-    input#inputBody(type="text",placeholder="body",name="body")
-    button#btnSubmit(type="submit") Submit
+    br
+    textarea#inputBody(rows="10", cols="50",placeholder="body")
+    br
+    button#btn.btn-primary.btn-lg(type="submit") Submit
