@@ -7,6 +7,6 @@ block content
    form#postTutorial(name="postTutorial",method="post",action="/tutorial/addtutorial")
     input#inputTitle(type="text",placeholder="Title",name="title")
     br
-    textarea#inputBody(rows="10", cols="50",placeholder="body")
+    textarea#inputBody(type="text/html", name="body", rows="10", cols="50",placeholder="body")
     br
     button#btn.btn-primary.btn-lg(type="submit") Submit
