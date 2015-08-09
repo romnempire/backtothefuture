@@ -96,3 +96,15 @@ a {
 #formAddComment{
   color: "white";
 }
+
+#frontpage{
+  color: #ffffff;
+  opacity: .85;
+  text-align: center;
+  font-size: 85px;
+  font-family: sans-serif;
+}
+
+#checkout{
+  margin-bottom: 5px;
+}
