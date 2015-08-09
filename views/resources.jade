@@ -29,17 +29,17 @@ block header
     }
 
 block content
-  h1= defaultTab
+  h1#subtitle= defaultTab
   p#resources These are the #{defaultTab} results
-    p test
+    p#subtitle test
     each resource in resources
-      p
+      p#subtitle
         = resource.name
         form(name='addComment', method="post", id=resource._id + '')
           input(type='text', placeholder='comment here', name='commentText')
           button#btn.btn-primary(type='button', onclick='comment("'+ resource._id +'")') Submit
         each comment in resource.comments
-          p
+          p#comments
             = comment.text
       hr
   form(name='addResource', id='addResource')

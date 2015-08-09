@@ -33,10 +33,10 @@ block header
     }
 
 block content
-  h1= defaultTab
-  div#resources These are the #{defaultTab} results
+  h1#create= defaultTab
+  div#subtitle These are the #{defaultTab} results
     each resource in resources
-      div(id='div_'+resource._id, class='resource')
+      div(id='create'+resource._id, class='resource')
         = resource.name
         form(name='addComment', method="post", id=resource._id + '')
           input(type='text', placeholder='comment here', name='commentText')
