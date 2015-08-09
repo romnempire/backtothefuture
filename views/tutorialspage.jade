@@ -1,0 +1,14 @@
+extends layout
+block content
+  h1= title
+  p= body
+
+  form#formAddComment(name="addComment",method="post",action="/tutorial/addcomment/"+"#{pageID}")
+    input#inputComment(type="text",placeholder="Add a comment.",name="comment")
+    button#btnSubmit(type="submit") Submit
+
+  table#comments
+    tbody
+      for comment in comments
+        tr
+          td= comment.text

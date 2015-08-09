@@ -13,6 +13,7 @@ var db = monk('localhost:27017/backtothefuture');
 var routes = require('./routes/index');
 var users = require('./routes/users');
 var resources = require('./routes/resources');
+var tutorial = require('./routes/tutorial');
 
 var app = express();
 
@@ -37,6 +38,7 @@ app.use(function(req,res,next) {
 app.use('/', routes);
 app.use('/users', users);
 app.use('/resources', resources);
+app.use('/tutorial', tutorial);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

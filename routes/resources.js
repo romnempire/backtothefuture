@@ -3,7 +3,7 @@ var router = express.Router();
 
 router.get('/', function(req, res) {
   var resources = {
-    tabs: ['work', 'housing', 'food', 'education', 'transportation'],
+    tabs: ['work', 'housing', 'food', 'education', 'transportation', 'help'],
     defaultTab: 'work',
     resources: []
   };
@@ -13,7 +13,7 @@ router.get('/', function(req, res) {
     console.log(data);
 
     resources.resources = data;
-    res.render('resources', resources);
+    res.render('resourcespage', resources);
   });
 });
 
