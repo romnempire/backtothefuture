@@ -69,3 +69,7 @@ a {
 .tables{
   padding: 10px;
 }
+
+#time_is_link{
+  position: relative;
+}
