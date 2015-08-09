@@ -34,7 +34,7 @@ block content
         = resource.name
         form(name='addComment', method="post", id=resource._id + '')
           input(type='text', placeholder='comment here', name='commentText')
-          button#submit(type='button', onclick='comment("'+ resource._id +'")') Submit
+          button#btn.btn-primary.btn-lg(type='button', onclick='comment("'+ resource._id +'")') Submit
         each comment in resource.comments
           p= comment.text
       hr
@@ -45,4 +45,4 @@ block content
     span Address
     input(type='text', placeholder='description', name='description')
     span Description
-    button#submit(type='button', onclick='resource()') Submit
+    button#btn.btn-primary.btn-lg(type='button', onclick='resource()') Submit
