@@ -10,6 +10,8 @@ var mongo = require('mongodb');
 var monk = require('monk');
 var db = monk('localhost:27017/backtothefuture');
 
+var braintree = require("braintree");
+
 var routes = require('./routes/index');
 var users = require('./routes/users');
 var resources = require('./routes/resources');
@@ -28,6 +30,13 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+
+var gateway = braintree.connect({
+  environment: braintree.Environment.Sandbox,
+  merchantId: "2r8fy729ngnnyq5r",
+  publicKey: "2j5sg8wnt523x83h",
+  privateKey: "be81417799d1fc961ca6bda3185219fd"
+});
 
 // Make our db accissible to our router
 app.use(function(req,res,next) {
