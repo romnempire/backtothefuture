@@ -51,16 +51,20 @@ router.post('/addtutorial', function(req, res) {
   var collection = req.db.get('testTutorials');
   var title = req.body.title;
   var body = req.body.body;
-  collection.insert({
-    "title" : title,
-    "body" : body
-  }, function(err, doc) {
-    if (err) {
-      res.send("There was a problem.");
-    } else {
-      res.redirect('/tutorial');
-    }
-  });
+  if (title && body) {
+    collection.insert({
+      "title" : title,
+      "body" : body
+    }, function(err, doc) {
+      if (err) {
+        res.send("There was a problem.");
+      } else {
+        res.redirect('/tutorial');
+      }
+    });
+  } else {
+    res.send("Fill in all fields");
+  }
 });
 
 module.exports = router;
