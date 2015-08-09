@@ -26,7 +26,8 @@ router.get('/', function(req, res) {
     } else {
       console.log('the following is what was passed in from the inside');
       console.log(datum);
-      collection.find({resourceID: resources.resources[0]._id}, {}, function(err, data) {
+      collection.find({resourceID: resources.resources[nextIndex-1]._id}, {}, function(err, data) {
+        console.log(data);
         resources.resources[nextIndex-1].comments = data;
         accumulate(e, data[nextIndex], nextIndex+1 );
       });
