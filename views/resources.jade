@@ -1,8 +1,23 @@
 extends layout
 
+block header
+  script(src='//code.jquery.com/jquery-1.11.3.min.js')
+  script.
+    function comment(resourceID) {
+      jQuery.ajax('resources/addcomment/' + resourceID, {type:"post", data: {commentText: document.forms.namedItem(resourceID).commentText.value}}).success(
+      function(data){
+        console.log(data);
+        $('body').append("<p>" + data.text + "</p>");
+      });
+    }
+
 block content
   h1= defaultTab
   p These are the #{defaultTab} results
   - for resource in resources
     p
       = resource.name
+    form(name='addComment', method="post", id=resource._id + '')
+      input(type='text', placeholder='comment here', name='commentText')
+      button#submit(type='button', onclick='comment("'+ resource._id +'")') Submit
+
