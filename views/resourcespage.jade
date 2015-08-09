@@ -3,12 +3,26 @@ extends layout
 block header
   script(src='//code.jquery.com/jquery-1.11.3.min.js')
   script.
+    var defaultTab = "#{defaultTab}"
     function comment(resourceID) {
       jQuery.ajax('resources/addcomment/' + resourceID, {type:"post", data: {commentText: document.forms.namedItem(resourceID).commentText.value}}).success(
       function(data){
         console.log(data);
         $('body').append("<p>" + data.text + "</p>");
       });
+    }
+
+    function resource() {
+      jQuery.ajax('resources/addresource/', {type:"post", data: {
+        name: document.forms.namedItem('addResource').name.value,
+        address: document.forms.namedItem('addResource').address.value,
+        type: defaultTab,
+        description: document.forms.namedItem('addResource').description.value,
+      }}).success(
+        function(data) {
+          $('#resources').append('<p>' + data.name + '</p><hr>');
+        }
+      )
     }
 
 block content
@@ -22,7 +36,8 @@ block content
           input(type='text', placeholder='comment here', name='commentText')
           button#submit(type='button', onclick='comment("'+ resource._id +'")') Submit
         each comment in resource.comments
-          p= comment.text
+          p
+            = comment.text
       hr
   form(name='addResource', id='addResource')
     input(type='text', placeholder='resource name', name='name')

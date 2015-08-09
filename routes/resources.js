@@ -27,7 +27,6 @@ router.get('/', function(req, res) {
       console.log('the following is what was passed in from the inside');
       console.log(datum);
       collection.find({resourceID: resources.resources[nextIndex-1]._id}, {}, function(err, data) {
-        console.log(data);
         resources.resources[nextIndex-1].comments = data;
         accumulate(e, data[nextIndex], nextIndex+1 );
       });
@@ -43,6 +42,24 @@ router.post('/addcomment/:tagId', function(req, res) {
   collection.insert({
     resourceID: id,
     text: req.body.commentText
+  }, function(err, data) {
+    if (err) {
+      res.send('gg');
+    } else {
+      res.send(data);
+    }
+  });
+});
+
+router.post('/addresource', function(req, res) {
+  var collection = req.db.get('resources');
+  collection.insert({
+    name: req.body.name,
+    address:  req.body.address,
+    type: req.body.type,
+    description: req.body.description,
+    rating: 50,
+    date: new Date()
   }, function(err, data) {
     if (err) {
       res.send('gg');
