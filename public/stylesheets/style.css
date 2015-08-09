@@ -88,6 +88,16 @@ a {
   padding: 10px;
 }
 
+.resource{
+  color:white;
+  font-size:32px;
+}
+
+.resourcecomment {
+  color:white;
+  font-size:16px;
+}
+
 .feed{
   font-size: 15px;
 }

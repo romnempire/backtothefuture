@@ -8,7 +8,7 @@ block header
       jQuery.ajax('resources/addcomment/' + resourceID, {type:"post", data: {commentText: document.forms.namedItem(resourceID).commentText.value}}).success(
       function(data){
         console.log(data);
-        $('body').append("<p>" + data.text + "</p>");
+        $('#div_' + resourceID).append("<p class="resourcecomment">" + data.text + "</p>");
       });
     }
 
@@ -20,7 +20,14 @@ block header
         description: document.forms.namedItem('addResource').description.value,
       }}).success(
         function(data) {
-          $('#resources').append('<p>' + data.name + '</p><hr>');
+          console.log(data._id);
+          $('#resources').append(
+            '<div id='+ 'div_' + data._id +' class="resource">' + data.name + '<form name=\"addComment\" id='+ data._id + '>' +
+            '<input type="text" placeholder="comment here" name="commentText">' +
+            '<button type="button" onclick=\"comment(\'' + data._id + '\')\">Submit</button>' +
+            '</form></div>' +
+            '<hr>'
+            );
         }
       )
     }
@@ -28,15 +35,14 @@ block header
 block content
   h1= defaultTab
   div#resources These are the #{defaultTab} results
-    a #[p test]
     each resource in resources
-      div
+      div(id='div_'+resource._id, class='resource')
         = resource.name
         form(name='addComment', method="post", id=resource._id + '')
           input(type='text', placeholder='comment here', name='commentText')
           button#btn.btn-primary.btn-lg(type='button', onclick='comment("'+ resource._id +'")') Submit
         each comment in resource.comments
-          p= comment.text
+          p(class='resourcecomment')= comment.text
       hr
   form(name='addResource', id='addResource')
     input(type='text', placeholder='resource name', name='name')
