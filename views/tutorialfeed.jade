@@ -1,0 +1,11 @@
+extends layout
+
+block content
+  h1 Tutorials
+  
+  table
+    tbody
+      for tutorial in tutorials
+        tr
+          td 
+            a(href="/tutorial/" + tutorial._id) #{tutorial.title}

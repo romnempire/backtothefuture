@@ -1,8 +1,15 @@
 var express = require('express');
 var router = express.Router();
 
+router.get('/', function(req, res) {
+  var collection = req.db.get('testTutorials');
+  collection.find({}, {}, function(e, docs) {
+    res.render('tutorialfeed', {tutorials : docs});
+  });
+});
+
 router.get('/:tagId', function(req, res) {
-  var collection = req.db.get('tutorials');
+  var collection = req.db.get('testTutorials');
   collection.find({_id: req.params.tagId}, {}, function(e, docs) {
     console.log(docs[0]._id);
     if (docs.length == 0) {
@@ -21,7 +28,7 @@ router.get('/:tagId', function(req, res) {
 });
 
 router.post('/addcomment/:tagId', function(req, res) {
-  var collection = req.db.get('tutorials');
+  var collection = req.db.get('testTutorials');
   var comment = req.body.comment;
   console.log("entered rt");
   collection.insert({
