@@ -3,6 +3,7 @@ extends layout
 block header
   script(src='//code.jquery.com/jquery-1.11.3.min.js')
   script.
+    var defaultTab = "#{defaultTab}"
     function comment(resourceID) {
       jQuery.ajax('resources/addcomment/' + resourceID, {type:"post", data: {commentText: document.forms.namedItem(resourceID).commentText.value}}).success(
       function(data){
@@ -11,16 +12,38 @@ block header
       });
     }
 
+    function resource() {
+      jQuery.ajax('resources/addresource/', {type:"post", data: {
+        name: document.forms.namedItem('addResource').name.value,
+        address: document.forms.namedItem('addResource').address.value,
+        type: defaultTab,
+        description: document.forms.namedItem('addResource').description.value,
+      }}).success(
+        function(data) {
+          $('#resources').append('<p>' + data.name + '</p><hr>');
+        }
+      )
+    }
+
 block content
   h1= defaultTab
-  p These are the #{defaultTab} results
-  - for resource in resources
-    p
-      = resource.name
-    form(name='addComment', method="post", id=resource._id + '')
-      input(type='text', placeholder='comment here', name='commentText')
-      button#submit(type='button', onclick='comment("'+ resource._id +'")') Submit
-    - for comment in resource.comments
+  p#resources These are the #{defaultTab} results
+    p test
+    each resource in resources
       p
-        = comment.text
-
+        = resource.name
+        form(name='addComment', method="post", id=resource._id + '')
+          input(type='text', placeholder='comment here', name='commentText')
+          button#submit(type='button', onclick='comment("'+ resource._id +'")') Submit
+        each comment in resource.comments
+          p
+            = comment.text
+      hr
+  form(name='addResource', id='addResource')
+    input(type='text', placeholder='resource name', name='name')
+    span Name
+    input(type='text', placeholder='address', name='address')
+    span Address
+    input(type='text', placeholder='description', name='description')
+    span Description
+    button#submit(type='button', onclick='resource()') Submit
