@@ -20,4 +20,7 @@ block content
     form(name='addComment', method="post", id=resource._id + '')
       input(type='text', placeholder='comment here', name='commentText')
       button#submit(type='button', onclick='comment("'+ resource._id +'")') Submit
+    - for comment in resource.comments
+      p
+        = comment.text
 
