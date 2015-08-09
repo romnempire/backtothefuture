@@ -1,11 +1,16 @@
 body {
-  //background-image: url(/images/nature.jpg);
+  background-image: url(/images/nature.jpg);
   background-position: center center;
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-size: cover;
   padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+span{
+    text-align: center;
+    color: #ffffff;
+    font-size:2em;
 }
 
 a {
@@ -16,4 +21,51 @@ a {
    margin: auto;
 }
 
+#myCarousel {
+	padding: 75px
+}
 
+.heading{
+  color: #ffffff;
+  -webkit-text-stroke-width: 3px;
+  -webkit-text-stroke-color: black;
+  padding: 80px;
+  text-align: center;
+  font-family: sans-serif;
+  font-size:140px;
+}
+
+#create{
+  color: #fff;
+  padding-top: 100px;
+  text-align: left;
+  font-family: sans-serif;
+  font-size: 50px;
+  padding-bottom: 20px;
+}
+
+#postTutorial {
+  position: relative;
+  float: center;
+  clear: both;
+}
+#inputBody {
+  padding-top: 10px;
+  margin: center;
+}
+
+.createTutorial{
+  display: block;
+  width: 115px;
+  height: 25px;
+  background: #4E9CAF;
+  padding: 10px;
+  text-align: center;
+  border-radius: 5px;
+  color: white;
+  font-weight: bold;
+}
+
+.tables{
+  padding: 10px;
+}
