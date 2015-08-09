@@ -66,5 +66,4 @@ router.post('/addtutorial', function(req, res) {
     res.send("Fill in all fields");
   }
 });
-
 module.exports = router;

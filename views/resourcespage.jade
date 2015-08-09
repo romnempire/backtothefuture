@@ -1,8 +1,5 @@
 extends layout
 
-style.
-    h1{font-size: 18px; color: "yellow";}
-
 block header
   script(src='//code.jquery.com/jquery-1.11.3.min.js')
   script.
@@ -30,17 +27,16 @@ block header
 
 block content
   h1= defaultTab
-  p#resources These are the #{defaultTab} results
-    p test
+  div#resources These are the #{defaultTab} results
+    a #[p test]
     each resource in resources
-      p
+      div
         = resource.name
         form(name='addComment', method="post", id=resource._id + '')
           input(type='text', placeholder='comment here', name='commentText')
           button#submit(type='button', onclick='comment("'+ resource._id +'")') Submit
         each comment in resource.comments
-          p
-            = comment.text
+          p= comment.text
       hr
   form(name='addResource', id='addResource')
     input(type='text', placeholder='resource name', name='name')
