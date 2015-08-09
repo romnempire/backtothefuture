@@ -10,6 +10,8 @@ block content
       for tutorial in tutorials
         tr
           td.tables
-            button.btn.btn-default.btn-md(href="/tutorial/" + tutorial._id) #{tutorial.title}
+            form(method="get",action="/tutorial/" + tutorial._id)
+              button.btn.btn-default.btn-md(type="submit") #{tutorial.title}
 
-  button#btn.btn-primary.btn-lg(href='/tutorial/newtutorial') Create a new tutorial!
+  form(method="get",action="/tutorial/newtutorial")
+    button#btn.btn-primary.btn-lg(type="submit") Create a new tutorial!
