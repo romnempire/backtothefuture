@@ -24,14 +24,14 @@ a {
 #myCarousel {
 	padding: 75px
 }
-j
-#heading{
-  color: #fff;
+
+.heading{
+  color: #ffffff;
   -webkit-text-stroke-width: 3px;
   -webkit-text-stroke-color: black;
   padding: 80px;
   text-align: center;
-  font-family: 'Fira Sans', sans-serif;
+  font-family: sans-serif;
   font-size:140px;
 }
 
